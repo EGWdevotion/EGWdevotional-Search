@@ -24,7 +24,7 @@ except Exception:
 # --------------------------------------------------
 # DB
 # --------------------------------------------------
-DB_PATH = Path("egw_devotionals.sqlite")
+DB_PATH = Path("data/egw_devotionals.sqlite")
 
 st.set_page_config(
     page_title="EGW 기도력 검색",
@@ -868,4 +868,5 @@ else:
                 file_name=f"page_explorer_{book}_{page}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
+
 
