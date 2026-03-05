@@ -467,14 +467,19 @@ def page_distribution_ko(short: str):
 
 
 
+mode = st.sidebar.radio(
+    "메뉴",
+    ["날짜 검색", "키워드 검색", "출처 검색", "책별 통계", "페이지 탐색기"],
+    key="mode_radio"
+)
+
+
 
 st.sidebar.markdown("---")
 st.sidebar.markdown(
     "<small>📖 EGW 기도력 검색 v1.0<br>제작: 김효준<br>© 2026</small>",
     unsafe_allow_html=True
 )
-
-
 # --------------------------------------------------
 # 날짜 검색
 # --------------------------------------------------
@@ -1331,19 +1336,7 @@ def page_distribution_ko(short: str):
 # --------------------------------------------------
 # UI
 # --------------------------------------------------
-mode = st.sidebar.radio(
-    "메뉴",
-    ["날짜 검색", "키워드 검색", "출처 검색", "책별 통계", "페이지 탐색기"],
-    key="mode_radio"
-)
 
-
-
-st.sidebar.markdown("---")
-st.sidebar.markdown(
-    "<small>📖 EGW 기도력 검색 v1.0<br>제작: 김효준<br>© 2026</small>",
-    unsafe_allow_html=True
-)
 
 
 # --------------------------------------------------
