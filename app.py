@@ -483,40 +483,7 @@ st.sidebar.markdown(
 # --------------------------------------------------
 # 날짜 검색
 # --------------------------------------------------
-if mode == "날짜 검색":
-    years = conn.execute("""
-        SELECT DISTINCT substr(d,1,4) as year
-        FROM devotions
-        ORDER BY year
-    """).fetchall()
-    year_list = [int(r["year"]) for r in years]
 
-    selected_year = st.selectbox("연도", year_list, key="date_year")
-    selected_month = st.selectbox("월", list(range(1, 13)), key="date_month")
-    last_day = calendar.monthrange(selected_year, selected_month)[1]
-    selected_day = st.selectbox("일", list(range(1, last_day + 1)), key="date_day")
-
-    d = f"{selected_year:04d}-{selected_month:02d}-{selected_day:02d}"
-
-    if st.button("검색", key="date_search_btn"):
-        en, ko = fetch_pair_by_date(d)
-
-        if not en and not ko:
-            st.warning("해당 날짜의 항목이 없습니다.")
-        else:
-            left, right = st.columns(2)
-            with left:
-                if en:
-                    st.subheader(f"EN | {en['d']} | {en['title']} ({en['volume_id']})")
-                    st.markdown(escape(en["body"]).replace("\n", "<br>"), unsafe_allow_html=True)
-                else:
-                    st.info("EN: (없음)")
-            with right:
-                if ko:
-                    st.subheader(f"KO | {ko['d']} | {ko['title']} ({ko['volume_id']})")
-                    st.markdown(escape(ko["body"]).replace("\n", "<br>"), unsafe_allow_html=True)
-                else:
-                    st.info("KO: (없음)")
 
 # --------------------------------------------------
 # 키워드 검색
